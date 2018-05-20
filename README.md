@@ -83,12 +83,12 @@ python3 mnist_cnn1.py
 
 Parameters that can be run with this script
 ~~~
---model_name            # the name of the saved model
---export_images         # instead of training a model, save MNIST to .png's
---export_number         # number of MNIST images to export (if enabled)
---plot_images           # instead of training a model, display MNIST images
---epochs                # number of epochs to train model for
---batch_size            # batch size to use for training
+--model_name            # the name of the saved model                         default='mnist_cnn1'
+--export_images         # instead of training a model, save MNIST to .png's   default=False
+--export_number         # number of MNIST images to export (if enabled)       default=10
+--plot_images           # instead of training a model, display MNIST images   default=False
+--epochs                # number of epochs to train model for                 default=5
+--batch_size            # batch size to use for training                      default=128
 ~~~
 
 These parameters can be applied to the python script in the following way
@@ -96,7 +96,7 @@ These parameters can be applied to the python script in the following way
 python3 mnist_cnn1.py --[param1_name]=[param1_value] --[param2_name]=[param2_value]
 ~~~
 
-### Adding saved graph to Unity
+### Adding the graph to Unity
 The python script will generate a graph of the TensorFlow model once training is complete. Two files of importance are saved: *frozen_mnist_cnn1.bytes* and *opt_mnist_cnn1.bytes*. The latter is an optimized (smaller) version of the former. The model files are saved to the following location
 ~~~
 TensorFlow/out/frozen_mnist_cnn1.bytes
