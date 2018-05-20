@@ -25,3 +25,9 @@ Apks/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# Pycharm IDE
+.idea/
+
+# TensorFlow folders
+export/
+out/
