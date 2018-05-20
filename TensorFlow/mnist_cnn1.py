@@ -15,6 +15,9 @@
 #
 # Datasets in use:
 #   MNIST
+#
+# Notes:
+#   Determine version of your TF: python3 -c 'import tensorflow as tf; print(tf.__version__)'
 
 import os
 import os.path as path
@@ -44,7 +47,6 @@ parser.add_argument('--model_name', default='mnist_cnn1')       # the name of th
 # dataset params
 parser.add_argument('--export_images', default=False)           # instead of training a model, save MNIST to .png's
 parser.add_argument('--export_number', default=10)              # number of MNIST images to export (if enabled)
-parser.add_argument('--export_trainset', default=True)          # export training set MNIST images (vs validation set)
 parser.add_argument('--plot_images', default=False)             # instead of training a model, display MNIST images
 
 # training params
@@ -59,7 +61,6 @@ args = parser.parse_args()
 model_name = args.model_name
 export_images = args.export_images
 export_number = args.export_number
-export_trainset = args.export_trainset
 plot_images = args.plot_images
 epochs = args.epochs
 batch_size = args.batch_size
@@ -77,10 +78,8 @@ def load_data():
             if not path.exists('export'):
                 os.mkdir('export')
 
-            if export_trainset:
-                imsave('export/mnist_train_{}.png'.format(i), x_train[i])
-            else:
-                imsave('export/mnist_test_{}.png'.format(i), x_test[i])
+            imsave('export/mnist_train_{}.png'.format(i), x_train[i])
+            imsave('export/mnist_test_{}.png'.format(i), x_test[i])
 
         exit(0)
 
@@ -162,17 +161,17 @@ def export_model(saver, model, input_node_names, output_node_name):
     freeze_graph.freeze_graph('out/' + model_name + '_graph.pbtxt', None, False,
                               'out/' + model_name + '.chkp', output_node_name,
                               "save/restore_all", "save/Const:0",
-                              'out/frozen_' + model_name + '.pb', True, "")
+                              'out/frozen_' + model_name + '.bytes', True, "")
 
     input_graph_def = tf.GraphDef()
-    with tf.gfile.Open('out/frozen_' + model_name + '.pb', "rb") as f:
+    with tf.gfile.Open('out/frozen_' + model_name + '.bytes', "rb") as f:
         input_graph_def.ParseFromString(f.read())
 
     output_graph_def = optimize_for_inference_lib.optimize_for_inference(
             input_graph_def, input_node_names, [output_node_name],
             tf.float32.as_datatype_enum)
 
-    with tf.gfile.FastGFile('out/opt_' + model_name + '.pb', "wb") as f:
+    with tf.gfile.FastGFile('out/opt_' + model_name + '.bytes', "wb") as f:
         f.write(output_graph_def.SerializeToString())
 
     print("graph saved!")
