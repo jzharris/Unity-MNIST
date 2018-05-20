@@ -8,6 +8,7 @@ A sample project implementing TensorFlowSharp and a trained Convolutiona Neural 
 ## Dependencies
 * Unity 2017.2 or above
 * Unity TensorFlow Plugin ([Download here](https://s3.amazonaws.com/unity-ml-agents/0.3/TFSharpPlugin.unitypackage))
+* Unity .Net 4.6
 * TensorFlow 1.4
 * Keras 2.1.3
 * Python packages:
@@ -113,6 +114,13 @@ Add either of the .bytes files to the *Graph Model* element in the MNIST_Classif
 <p align="center"> 
    <img src="https://github.com/jzharris/Unity-MNIST/blob/master/Unity-Files/Screenshots/setup.png">
 </p>
+
+### Playing the game
+In order to process the Unity TensorFlow Plugin, you must perform the following under Edit > Project Settings > Player > Other Settings
+* Add ENABLE_TENSORFLOW to *Scripting Define Symbols*
+* Change *Scripting Runtime Version* from .NET 3.5 to .Net 4.6
+
+Press play, and use the arrow keys to change the input to the TensorFlow model
 
 ## Contributing
 
