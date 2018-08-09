@@ -16,14 +16,17 @@ public class MNIST_Classifier : MonoBehaviour {
 
 	public Text label;										// Label of classification
 
-	private float[,,,] inputImg = new float[1,28,28,1];		// Input to model
+	private static int img_width = 28;						// Image width
+	private static int img_height = 28;						// Image height
+	private float[,,,] inputImg = 
+		new float[1,img_width,img_height,1]; 				// Input to model
 
 	// Use this for initialization
 	void Start () {
 		baseTexture = displayMaterial.mainTexture;
 
 		if (inputTextures.Length > 0) {
-			Evaluate (inputTextures [incImg]);
+			Evaluate (inputTextures [0]);
 		}
 	}
 	
@@ -50,10 +53,10 @@ public class MNIST_Classifier : MonoBehaviour {
 
 	// Classify an MNIST image by running the model
 	void Evaluate (Texture2D input) {
-
+		
 		// Get raw pixel values from texture, format for inputImg array
-		for (int i = 0; i < 784; i++) {
-			inputImg [0, 27 - i / 28, i % 28, 0] = input.GetPixel (i % 28, i / 28).r;
+		for (int i = 0; i < img_width * img_height; i++) {
+			inputImg [0, (img_height-1) - (i / (img_width)), i % img_width, 0] = input.GetPixel (i % img_width, i / img_width).r;
 		}
 
 		// Apply texture to displayMaterial
