@@ -55,8 +55,10 @@ public class MNIST_Classifier : MonoBehaviour {
 	void Evaluate (Texture2D input) {
 		
 		// Get raw pixel values from texture, format for inputImg array
-		for (int i = 0; i < img_width * img_height; i++) {
-			inputImg [0, (img_height-1) - (i / (img_width)), i % img_width, 0] = input.GetPixel (i % img_width, i / img_width).r;
+		for (int i = 0; i < img_width; i++) {
+			for (int j = 0; j < img_height; j++) {
+				inputImg [0, img_width - i - 1, j, 0] = input.GetPixel(j, i).r;
+			}
 		}
 
 		// Apply texture to displayMaterial
