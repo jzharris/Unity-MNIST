@@ -1,9 +1,14 @@
 # Unity-MNIST
-A sample project implementing TensorFlowSharp and a trained CNN network to classify MNIST images in the Unity Video Game Engine. TensorFlow models can be applied to Unity for recognition games and simulations. This example takes in sample image textures, evaluates them using a trained model, and displays the classification to the screen.
+A sample project implementing TensorFlowSharp and a trained Convolutiona Neural Network (CNN) to classify MNIST images in the Unity Video Game Engine. TensorFlow models can be applied to Unity for recognition games and simulations. This example takes in sample image textures, evaluates them using a trained model, and displays the classification to the screen.
+
+<p align="center"> 
+   <img src="https://github.com/jzharris/Unity-MNIST/blob/master/Unity-Files/Screenshots/running_game.png">
+</p>
 
 ## Dependencies
 * Unity 2017.2 or above
 * Unity TensorFlow Plugin ([Download here](https://s3.amazonaws.com/unity-ml-agents/0.3/TFSharpPlugin.unitypackage))
+* Unity .Net 4.6
 * TensorFlow 1.4
 * Keras 2.1.3
 * Python packages:
@@ -67,6 +72,55 @@ pip3 install argparse
 pip3 install matplotlib
 pip3 install pillow
 ~~~
+
+## Running the project
+
+### Training the model
+To apply a trained model to Unity, first run the python file containing the CNN
+~~~
+cd TensorFlow/
+python3 mnist_cnn1.py
+~~~
+
+Parameters that can be run with this script
+~~~
+--model_name            # the name of the saved model                         default='mnist_cnn1'
+--export_images         # instead of training a model, save MNIST to .png's   default=False
+--export_number         # number of MNIST images to export (if enabled)       default=10
+--plot_images           # instead of training a model, display MNIST images   default=False
+--epochs                # number of epochs to train model for                 default=5
+--batch_size            # batch size to use for training                      default=128
+~~~
+
+These parameters can be applied to the python script in the following way
+~~~
+python3 mnist_cnn1.py --[param1_name]=[param1_value] --[param2_name]=[param2_value]
+~~~
+
+### Adding the graph to Unity
+The python script will generate a graph of the TensorFlow model once training is complete. Two files of importance are saved: *frozen_mnist_cnn1.bytes* and *opt_mnist_cnn1.bytes*. The latter is an optimized (smaller) version of the former. The model files are saved to the following location
+~~~
+TensorFlow/out/frozen_mnist_cnn1.bytes
+TensorFlow/out/opt_mnist_cnn1.bytes
+~~~
+
+To add these files to Unity, run the following while inside the parent directory of the project
+~~~
+cp TensorFlow/out/*.bytes Unity-Files/MNIST/Assets/TensorFlow/Frozen_graphs/
+~~~
+
+Add either of the .bytes files to the *Graph Model* element in the MNIST_Classifier object. Add any image textures you wish to test with the model to the *Input Textures* element. See the following for a working example setup
+
+<p align="center"> 
+   <img src="https://github.com/jzharris/Unity-MNIST/blob/master/Unity-Files/Screenshots/setup.png">
+</p>
+
+### Playing the game
+In order to process the Unity TensorFlow Plugin, you must perform the following under Edit > Project Settings > Player > Other Settings
+* Add ENABLE_TENSORFLOW to *Scripting Define Symbols*
+* Change *Scripting Runtime Version* from .NET 3.5 to .Net 4.6
+
+Press play, and use the arrow keys to change the input to the TensorFlow model
 
 ## Contributing
 
