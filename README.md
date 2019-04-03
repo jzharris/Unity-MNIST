@@ -20,53 +20,52 @@ A sample project implementing TensorFlowSharp and a trained Convolutional Neural
  * Linux 64 bit
  * Mac OS X 64 bit
  * Windows 64 bit
- * iOS (Requires additional steps [found here](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md#ios-additional-instructions-for-building))
  * Android
 
 ## Installation
 The following packages are required for this project. Specific TensorFlow and Keras versions are required. If you'd like to keep a newer version of these packages, install these packages in a virtual environment. If you don't wish to use a virtual environment, skip the following section.
 
 ### VirtualEnv
-To create a new virtual environment for TensorFlow 1.4. Note: your python3 library may differ
+To create a new virtual environment for TensorFlow 1.4. Note: your python3 library may differ.
 ~~~
 cd ~/
 virtualenv -p /usr/bin/python3 tensorflow_1.4
 ~~~
 
-To activate the virtual environment and use for training
+To activate the virtual environment and use for training.
 ~~~
 source ~/tensorflow_1.4/bin/activate
 ~~~
 
-To deactivate this virtual environment, once finished with training
+To deactivate this virtual environment, once finished with training.
 ~~~
 deactive
 ~~~
 
 ### Automated install
-Warning: running the following script will install TensorFlow, Keras, and python packages. No su permissions are necessary
+Warning: running the following script will install TensorFlow, Keras, and python packages. No su permissions are necessary.
 ~~~
 chmod +x TensorFlow/install.sh
 TensorFlow/install.sh
 ~~~
 
 ### Manual install
-How to install all of the packages manually (without install script)
+How to install all of the packages manually (without install script).
 
 #### TensorFlow
-Install version 1.4 of TensorFlow (cpu or gpu). Version 1.4 is required for the TFSharp Unity package
+Install version 1.4 of TensorFlow (cpu or gpu). Version 1.4 is required for the TFSharp Unity package.
 ~~~
 pip3 install tensorflow==1.4
 ~~~
 
 #### Keras
-Install version 2.1.3 of Keras. This version is one compatible with TensorFlow 1.4
+Install version 2.1.3 of Keras. This version is one compatible with TensorFlow 1.4.
 ~~~
 pip3 install keras==2.1.3
 ~~~
 
 #### Python packages
-Install argparse, matplotlib, and pillow
+Install argparse, matplotlib, and pillow.
 ~~~
 pip3 install argparse
 pip3 install matplotlib
@@ -75,14 +74,17 @@ pip3 install pillow
 
 ## Running the project
 
-### Training the model
-To apply a trained model to Unity, first run the python file containing the CNN
+### Opening the Unity project
+The Unity project is located in the following folder: `Unity-Files/MNIST`. Open this folder from Unity to get started. The example scene can be found in `Scenes > Classifier`.
+
+### Training the TF model
+To apply a trained model to Unity, first run the python file containing the CNN.
 ~~~
 cd TensorFlow/
 python3 mnist_cnn1.py
 ~~~
 
-Parameters that can be run with this script
+Parameters that can be run with this script:
 ~~~
 --model_name            # the name of the saved model                         default='mnist_cnn1'
 --export_images         # instead of training a model, save MNIST to .png's   default=False
@@ -92,24 +94,24 @@ Parameters that can be run with this script
 --batch_size            # batch size to use for training                      default=128
 ~~~
 
-These parameters can be applied to the python script in the following way
+These parameters can be applied to the python script in the following way:
 ~~~
 python3 mnist_cnn1.py --[param1_name]=[param1_value] --[param2_name]=[param2_value]
 ~~~
 
 ### Adding the graph to Unity
-The python script will generate a graph of the TensorFlow model once training is complete. Two files of importance are saved: *frozen_mnist_cnn1.bytes* and *opt_mnist_cnn1.bytes*. The latter is an optimized (smaller) version of the former. The model files are saved to the following location
+The python script will generate a graph of the TensorFlow model once training is complete. Two files of importance are saved: *frozen_mnist_cnn1.bytes* and *opt_mnist_cnn1.bytes*. The latter is an optimized (smaller) version of the former. The model files are saved to the following location:
 ~~~
 TensorFlow/out/frozen_mnist_cnn1.bytes
 TensorFlow/out/opt_mnist_cnn1.bytes
 ~~~
 
-To add these files to Unity, run the following while inside the parent directory of the project
+To add these files to Unity, run the following while inside the parent directory of the project.
 ~~~
 cp TensorFlow/out/*.bytes Unity-Files/MNIST/Assets/TensorFlow/Frozen_graphs/
 ~~~
 
-Add either of the .bytes files to the *Graph Model* element in the MNIST_Classifier object. Add any image textures you wish to test with the model to the *Input Textures* element. See the following for a working example setup
+Add either of the .bytes files to the *Graph Model* element in the MNIST_Classifier object. Add any image textures you wish to test with the model to the *Input Textures* element. See the following for a working example setup.
 
 <p align="center"> 
    <img src="https://github.com/jzharris/Unity-MNIST/blob/master/Unity-Files/Screenshots/setup.png">
@@ -118,9 +120,9 @@ Add either of the .bytes files to the *Graph Model* element in the MNIST_Classif
 ### Playing the game
 In order to process the Unity TensorFlow Plugin, you must perform the following under Edit > Project Settings > Player > Other Settings
 * Add ENABLE_TENSORFLOW to *Scripting Define Symbols*
-* Change *Scripting Runtime Version* from .NET 3.5 to .Net 4.6
+* Change *Scripting Runtime Version* to .Net 4.x
 
-Press play, and use the arrow keys to change the input to the TensorFlow model
+Press play, and use the arrow keys to change the input image to the TensorFlow model.
 
 ## Contributing
 
@@ -132,8 +134,8 @@ Please read [CONTRIBUTING.md](https://github.com/jzharris/Unity-MNIST/blob/maste
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/jzharris/Unity-MNIST/blob/master/LICENSE) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/jzharris/Unity-MNIST/blob/master/LICENSE) file for details.
 
 ## Acknowledgments
 
-* Unity Technologies - *ML Agents* - [Repository](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md)
+* Unity Technologies - *ML Agents* - [Repository](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md).
