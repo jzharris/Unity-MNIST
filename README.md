@@ -1,5 +1,5 @@
 # Unity-MNIST
-A sample project implementing TensorFlowSharp and a trained Convolutiona Neural Network (CNN) to classify MNIST images in the Unity Video Game Engine. TensorFlow models can be applied to Unity for recognition games and simulations. This example takes in sample image textures, evaluates them using a trained model, and displays the classification to the screen.
+A sample project implementing TensorFlowSharp and a trained Convolutional Neural Network (CNN) to classify MNIST images in the Unity Video Game Engine. TensorFlow models can be applied to Unity for recognition games and simulations. This example takes in sample image textures, evaluates them using a trained model, and displays the classification to the screen.
 
 <p align="center"> 
    <img src="https://github.com/jzharris/Unity-MNIST/blob/master/Unity-Files/Screenshots/running_game.png">
