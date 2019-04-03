@@ -20,7 +20,7 @@ A sample project implementing TensorFlowSharp and a trained Convolutiona Neural 
  * Linux 64 bit
  * Mac OS X 64 bit
  * Windows 64 bit
- * iOS (Requires additional steps [found here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity.md#ios-additional-instructions-for-building))
+ * iOS (Requires additional steps [found here](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md#ios-additional-instructions-for-building))
  * Android
 
 ## Installation
