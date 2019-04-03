@@ -136,4 +136,4 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](https:
 
 ## Acknowledgments
 
-* Unity Technologies - *ML Agents* - [Repository](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity.md)
+* Unity Technologies - *ML Agents* - [Repository](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md)
