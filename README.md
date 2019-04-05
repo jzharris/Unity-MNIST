@@ -7,9 +7,11 @@ A sample project implementing TensorFlowSharp and a trained Convolutional Neural
 
 ## Dependencies
 * Unity 2017.2 or above
-* Unity TensorFlow Plugin ([Download here](https://s3.amazonaws.com/unity-ml-agents/0.3/TFSharpPlugin.unitypackage))
-* Unity .Net 4.6
-* TensorFlow 1.4
+* TensorFlow 1.4 or above
+* Unity TensorFlow Plugin
+    * Download [v0.3](https://s3.amazonaws.com/unity-ml-agents/0.3/TFSharpPlugin.unitypackage) if using Tensorflow 1.4.
+    * Download [v0.4](https://s3.amazonaws.com/unity-ml-agents/0.4/TFSharpPlugin.unitypackage) or [v0.5](https://s3.amazonaws.com/unity-ml-agents/0.5/TFSharpPlugin.unitypackage) if using a later Tensorflow version.
+* Unity .Net 4.6 or above
 * Keras 2.1.3
 * Python packages:
     * argparse
@@ -21,6 +23,9 @@ A sample project implementing TensorFlowSharp and a trained Convolutional Neural
  * Mac OS X 64 bit
  * Windows 64 bit
  * Android
+ * iOS requires additional steps:
+     * iOS support for TFSharp [found here](https://github.com/llSourcell/Unity_ML_Agents/blob/master/docs/Using-TensorFlow-Sharp-in-Unity-(Experimental).md#ios-additional-instructions-for-building).
+     * Requires Tensorflow 1.8.
 
 ## Installation
 The following packages are required for this project. Specific TensorFlow and Keras versions are required. If you'd like to keep a newer version of these packages, install these packages in a virtual environment. If you don't wish to use a virtual environment, skip the following section.
@@ -78,7 +83,7 @@ pip3 install pillow
 The Unity project is located in the following folder: `Unity-Files/MNIST`. Open this folder from Unity to get started. The example scene can be found in `Scenes > Classifier`.
 
 ### Training the TF model
-To apply a trained model to Unity, first run the python file containing the CNN.
+Run the following python script to train the CNN model.
 ~~~
 cd TensorFlow/
 python3 mnist_cnn1.py
